@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@orbs-network/ton-access": "^2.2.2",
+    "@prisma/client": "^6.0.1",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.2",
@@ -24,7 +25,9 @@
     "cn": "^0.1.1",
     "is-mobile": "^3.1.1",
     "lucide-react": "^0.464.0",
+    "next": "^15.0.3",
     "postcss": "^8.4.49",
+    "prisma": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6",
@@ -33,7 +36,8 @@
     "ton-core": "^0.46.0",
     "ton-crypto": "^3.2.0",
     "use-local-storage": "^2.3.6",
-    "vite-plugin-node-polyfills": "^0.7.0"
+    "vite-plugin-node-polyfills": "^0.7.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

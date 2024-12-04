@@ -16,19 +16,46 @@ export function ChatForm({ onSubmit }: ChatFormProps) {
   const { topicExists, addTopic } = useTopics();
   const [formData, setFormData] = useState<ChatFormData>({
     yourRole: 'Who are you?',
-    expectedRole: 'WHo do you want to connect with?',
+    expectedRole: 'Who do you want to connect with?',
     topic: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  
+    // Ensure all required fields are filled
     if (formData.expectedRole && formData.topic) {
+      // If the topic doesn't exist, add it locally (optional)
       if (!topicExists(formData.topic)) {
         addTopic(formData.topic);
       }
-      onSubmit(formData);
+  
+      try {
+        // Make a POST request to your backend
+        const response = await fetch('http://localhost:3000/api/requestQueue', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData), // Send formData to the backend
+        });
+  
+        // Handle response
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Chatroom created successfully:', data);
+          onSubmit(formData); // Call parent function after successful submission
+        } else {
+          console.error('Failed to create chatroom:', response.statusText);
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    } else {
+      console.error('Please fill all required fields.');
     }
   };
+  
 
   const handleTopicSelect = (topic: string) => {
     setFormData(prev => ({ ...prev, topic }));
