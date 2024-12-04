@@ -50,6 +50,7 @@ export function TransferTon({setStatus}:ChatFormProps) {
     });
     setTimeout(()=>{setStatus('room')},8000);
     
+    
   }}
         >
           Transfer
