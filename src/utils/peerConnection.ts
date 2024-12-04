@@ -1,5 +1,5 @@
 import Peer from 'peerjs';
-import { useChatStore } from '../store/useChatStore';
+import { useChatStore } from '../components/store/useChatStore';
 import toast from 'react-hot-toast';
 
 export const initializePeerConnection = (targetPeerId?: string) => {

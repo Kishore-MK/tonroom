@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useChatStore } from '../store/useChatStore';
+import { useChatStore } from './store/useChatStore';
 import { formatTime } from '../utils/timeUtils';
 
 export const Timer: React.FC = () => {

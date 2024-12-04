@@ -1,5 +1,5 @@
 import React from 'react';
-import { useChatStore } from '../store/useChatStore';
+import { useChatStore } from './store/useChatStore';
 
 export const MessageList: React.FC = () => {
   const { messages } = useChatStore();

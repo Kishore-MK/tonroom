@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import { useChatStore } from '../store/useChatStore';
+import { useChatStore } from './store/useChatStore';
 
 export const ChatInput: React.FC = () => {
   const [message, setMessage] = useState('');

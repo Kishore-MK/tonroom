@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useChatStore } from '../store/useChatStore';
+import { useChatStore } from './store/useChatStore';
 import { initializePeerConnection } from '../utils/peerConnection';
 
 export const ConnectionPanel: React.FC = () => {
