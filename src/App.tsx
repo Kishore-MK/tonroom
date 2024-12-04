@@ -27,13 +27,12 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { network } = useTonConnect();
-  const [status, setStatus] = useState<'form' | 'waiting' | 'room'>('form');
+  const [status, setStatus] = useState<'form' | 'waiting' | 'room'|'payment'>('form');
   const [formData, setFormData] = useState<ChatFormData | null>(null);
 
   const handleSubmit = (data: ChatFormData) => {
     setFormData(data);
-    const topicExists = Math.random() > 0.5;
-    setStatus('room');
+    setStatus('payment');
   };
 
   const handleTimeout = () => {
@@ -88,6 +87,9 @@ function App() {
 
               {status === 'room' && formData && (
                 <ChatRoom data={formData} />
+              )}
+              {status === 'payment' && formData && (
+                <TransferTon setStatus={setStatus}/>
               )}
             </div>
           </div>

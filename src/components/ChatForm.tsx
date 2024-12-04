@@ -21,6 +21,14 @@ export function ChatForm({ onSubmit }: ChatFormProps) {
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
+    // const response = await fetch('http://localhost:3000/requestQueue', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(formData), // Send formData to the backend
+    // });
+
     onSubmit(formData);
   };
   

@@ -20,8 +20,8 @@ router.post("/requestQueue", async (req, res) => {
 
     const newRequest = await prisma.requestQueue.create({
       data: {
-        topic,
-        creator,
+        topic:"topic",
+        creator:"mee",
       }})
     console.log("hey");
     return res.status(200)

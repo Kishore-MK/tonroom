@@ -5,13 +5,17 @@ import { useTonConnect } from "../hooks/useTonConnect";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { ChatFormData } from "./types/chat";
 
-export function TransferTon() {
+interface ChatFormProps {
+  setStatus: (data:'form' | 'waiting' | 'room'|'payment') => void;
+}
+export function TransferTon({setStatus}:ChatFormProps) {
   const { sender, connected } = useTonConnect();
 
   const [tonAmount, setTonAmount] = useState("0.01");
   const [tonRecipient, setTonRecipient] = useState(
-    "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c"
+    "0QBe_69aFfDIHL0WTlJZe_bXcPkFC29JEQlnkEGt_qfzgrSo"
   );
 
   return (
@@ -40,11 +44,13 @@ export function TransferTon() {
           disabled={!connected}
           style={{ marginTop: 18 }}
           onClick={async () => {
-            sender.send({
-              to: Address.parse(tonRecipient),
-              value: toNano(tonAmount),
-            });
-          }}
+    sender.send({
+      to: Address.parse(tonRecipient),
+      value: toNano(tonAmount),
+    });
+    setTimeout(()=>{setStatus('room')},8000);
+    
+  }}
         >
           Transfer
         </Button>
