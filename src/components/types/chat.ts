@@ -28,3 +28,17 @@ export interface SearchableOption {
   label: string;
   value: string;
 }
+
+export interface Message {
+  id: string;
+  text: string;
+  sender: 'self' | 'peer';
+  timestamp: Date;
+}
+
+export interface PeerConnection {
+  id: string | null;
+  conn: any | null;
+  connected: boolean;
+  error: string | null;
+}

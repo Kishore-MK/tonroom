@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTimeout } from './hooks/useTimeout';
-import { Timer } from './Timer';
+import { Timer } from './.Timer';
 
 interface WaitingRoomProps {
   topic: string;

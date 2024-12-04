@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { CHAIN } from "@tonconnect/protocol";
 import "@twa-dev/sdk";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChatForm } from './components/ChatForm';
 import { ThemeProvider } from './components/context/ThemeContext';
 import { TopicProvider } from './components/context/TopicContext';
@@ -15,6 +15,13 @@ import { MessageCircle } from 'lucide-react';
 import { WaitingRoom } from './components/WaitingRoom';
 import { ChatRoom } from './components/ChatRoom';
 import { Button } from "./components/ui/button";
+
+import { ConnectionPanel } from './components/ConnectionPanel';
+import { MessageList } from './components/MessageList';
+import { ChatInput } from './components/ChatInput';
+import { Timer } from './components/Timer';
+import { initializePeerConnection } from './utils/peerConnection';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -33,8 +40,14 @@ function App() {
     setStatus('form');
     setFormData(null);
   };
+  useEffect(() => {
+    initializePeerConnection();
+  }, []);
 
   return (
+    <>
+    
+
     <div className="container mx-auto px-4 py-4">
       <TopicProvider>
       <div className="flex space-x-2 absolute right-0">
@@ -82,6 +95,7 @@ function App() {
       </TopicProvider>
     
     </div>
+    </>
   );
 }
 

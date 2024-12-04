@@ -2,10 +2,8 @@ var express = require('express');
 var router = express.Router();
 router.use(express.json());
 /* GET home page. */
+var prisma=require('../lib/prisma')
 
-var {PrismaClient} = require("@prisma/client");
-
-const prisma = new PrismaClient();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -24,18 +22,10 @@ router.post("/requestQueue", async (req, res) => {
       data: {
         topic,
         creator,
-      },
-    });
-
-    // Schedule deletion after 5 minutes
-    setTimeout(async () => {
-      await prisma.requestQueue.delete({
-        where: { id: newRequest.id },
-      });
-      console.log(`RequestQueue ${newRequest.id} deleted after 5 mins.`);
-    }, 5 * 60 * 1000);
-
-    res.status(201).json(newRequest);
+      }})
+    console.log("hey");
+    return res.status(200)
+      
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
@@ -79,8 +69,10 @@ router.post("/chatRooms", async (req, res) => {
 
 // GET: Fetch all RequestQueues
 router.get("/requestQueue", async (req, res) => {
-  try {
+  try {console.log("loooooooggg");
     const requestQueues = await prisma.requestQueue.findMany();
+    
+    
     res.status(200).json(requestQueues);
   } catch (error) {
     console.error(error);
