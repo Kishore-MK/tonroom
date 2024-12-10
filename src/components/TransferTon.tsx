@@ -6,6 +6,7 @@ import { Card } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { ChatFormData } from "./types/chat";
+import { Label } from "./ui/label";
 
 interface ChatFormProps {
   setStatus: (data:'form' | 'waiting' | 'room'|'payment') => void;
@@ -34,11 +35,10 @@ export function TransferTon({setStatus}:ChatFormProps) {
         </div>
         <div className="flex space-x-2 items-center">
           <label>To </label>
-          <Input
+          <Label
             style={{ marginRight: 8 }}
-            value={tonRecipient}
-            onChange={(e) => setTonRecipient(e.target.value)}
-          ></Input>
+            
+          >{tonRecipient}</Label>
         </div>
         <Button
           disabled={!connected}

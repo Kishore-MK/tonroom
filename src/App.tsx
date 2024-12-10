@@ -22,6 +22,7 @@ import { ChatInput } from './components/ChatInput';
 import { Timer } from './components/Timer';
 import { initializePeerConnection } from './utils/peerConnection';
 import { Toaster } from 'react-hot-toast';
+import Viewchatrooms from "./components/Viewchatrooms";
 
 
 
@@ -93,6 +94,7 @@ function App() {
               )}
             </div>
           </div>
+          <Viewchatrooms/>
       
       </TopicProvider>
     
