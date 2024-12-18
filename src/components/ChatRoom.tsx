@@ -9,9 +9,10 @@ import { Toaster } from 'react-hot-toast';
 
 interface ChatRoomProps {
   data: ChatFormData;
+  setStatus: (data:'form' | 'waiting' | 'room'|'payment') => void;
 }
 
-export function ChatRoom({ data }: ChatRoomProps) {
+export function ChatRoom({ data,setStatus }: ChatRoomProps) {
   return (
     <>
     <div className="container mx-auto max-w-3xl h-full bg-white shadow-lg">

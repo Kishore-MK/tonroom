@@ -10,6 +10,8 @@
     "configbot": "node configure.js"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "@orbs-network/ton-access": "^2.2.2",
     "@prisma/client": "^6.0.1",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -23,38 +25,35 @@
     "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.1.1",
+    "dotenv": "^16.4.7",
     "is-mobile": "^3.1.1",
     "lucide-react": "^0.464.0",
     "next": "^15.0.3",
+    "peerjs": "^1.5.1",
     "postcss": "^8.4.49",
     "prisma": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "styled-components": "^5.3.6",
     "tailwind-merge": "^2.5.5",
+    "tailwindcss": "^3.3.3",
     "ton": "13.3.0",
     "ton-core": "^0.46.0",
     "ton-crypto": "^3.2.0",
+    "tonweb": "^0.0.66",
     "use-local-storage": "^2.3.6",
     "vite-plugin-node-polyfills": "^0.7.0",
     "zod": "^3.23.8",
-    
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18",
-    "peerjs": "^1.5.1",
-    "react-hot-toast": "^2.4.1",
-    "tailwindcss": "^3.3.3",
     "zustand": "^4.4.1"
-
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
-    "prettier": "^3.4.2",
-
     "@vitejs/plugin-react": "^4.0.3",
+    "prettier": "^3.4.2",
     "tailwindcss": "^3.4.16",
     "typescript": "^4.9.5",
     "vite": "^4.0.4"

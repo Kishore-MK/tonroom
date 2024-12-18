@@ -7,3 +7,4 @@ export const formatTime = (seconds: number): string => {
 
   return `${pad(hours)}:${pad(minutes)}:${pad(remainingSeconds)}`;
 };
+

@@ -1,7 +1,7 @@
 
 export interface ChatFormData {
-  yourRole: string;
-  expectedRole: string;
+  creatorRole: string;
+  participantRole: string;
   topic: string;
 }
 

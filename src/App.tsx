@@ -1,7 +1,6 @@
 import "./App.css";
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
 import { TransferTon } from "./components/TransferTon";
-import styled from "styled-components";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { CHAIN } from "@tonconnect/protocol";
 import "@twa-dev/sdk";
@@ -27,13 +26,13 @@ import Viewchatrooms from "./components/Viewchatrooms";
 
 
 function App() {
-  const { network } = useTonConnect();
-  const [status, setStatus] = useState<'form' | 'waiting' | 'room'|'payment'>('form');
+  const { network,wallet } = useTonConnect();
+  const [status, setStatus] = useState('form');
   const [formData, setFormData] = useState<ChatFormData | null>(null);
-
-  const handleSubmit = (data: ChatFormData) => {
-    setFormData(data);
-    setStatus('payment');
+  
+  const handleSubmit = (val: string,data:ChatFormData) => {
+  setFormData(data)
+    setStatus(val);
   };
 
   const handleTimeout = () => {
@@ -45,12 +44,11 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="bg-gray-50 ">
     
-
-    <div className="container mx-auto px-4 py-4">
+    <div className="container mx-auto px-4 py-4 ">
       <TopicProvider>
-      <div className="flex space-x-2 absolute right-0">
+      <div className="flex space-x-2 absolute right-0 mt-4">
         
             <TonConnectButton className="text-white"/>
             <Button>
@@ -63,7 +61,7 @@ function App() {
       </div>
      
       
-        <div className="min-h-screen transition-colors duration-200 bg-gray-50 mt-12">
+        <div className="min-h-screen transition-colors duration-200 mt-8">
   
             <div className="flex flex-col items-center justify-center space-y-8">
               <div className="text-center space-y-4">
@@ -74,32 +72,38 @@ function App() {
                 <p className=" text-black">
                 </p>
               </div>
-
+              
+                
+                
               {status === 'form' && (
+                <>
+                <Viewchatrooms onSubmit={handleSubmit}/>
+                <p className='flex justify-center text-2xl font-bold text-black'>OR</p>
+
                 <ChatForm onSubmit={handleSubmit} />
+                </>
               )}
 
               {status === 'waiting' && formData && (
                 <WaitingRoom 
-                  topic={formData.topic}
+                  ReqQueue={formData}
                   onTimeout={handleTimeout}
                 />
               )}
 
               {status === 'room' && formData && (
-                <ChatRoom data={formData} />
+                <ChatRoom data={formData} setStatus={setStatus}/>
               )}
               {status === 'payment' && formData && (
-                <TransferTon setStatus={setStatus}/>
+                <TransferTon setStatus={setStatus} data={formData}/>
               )}
             </div>
           </div>
-          <Viewchatrooms/>
       
       </TopicProvider>
     
+    </div> 
     </div>
-    </>
   );
 }
 

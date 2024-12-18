@@ -19,7 +19,7 @@ export const useChatStore = create<ChatStore>((set) => ({
   },
   addMessage: (message) =>
     set((state) => ({
-      messages: [message, ...state.messages],
+      messages: [...state.messages,message ],
     })),
   setPeerConnection: (connection) =>
     set((state) => ({

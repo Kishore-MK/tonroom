@@ -2,6 +2,7 @@ import Peer from 'peerjs';
 import { useChatStore } from '../components/store/useChatStore';
 import toast from 'react-hot-toast';
 
+
 export const initializePeerConnection = (targetPeerId?: string) => {
   const { setPeerConnection, addMessage } = useChatStore.getState();
 
@@ -46,5 +47,6 @@ const setupConnection = (conn: any) => {
   conn.on('close', () => {
     setPeerConnection({ connected: false, conn: null });
     toast.error('Connection closed');
+    
   });
 };
